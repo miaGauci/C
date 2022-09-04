@@ -1,0 +1,56 @@
+//
+// Created by Mia Gauci on 30/05/2022.
+//
+
+//A
+int intInput(int userNum, int max, int min){
+    printf("Minimum value allowed is 1 and the Maximum value allowed is 10");
+    printf("Enter number: \n");
+    scanf("%d", &userNum);
+
+    return (min<userNum && userNum<max);
+}
+
+#include <stdio.h>
+//B
+int nums[10];
+//recursive function requested
+int total(int nums[], int n){
+    if(n<=0){
+        return 0;
+    }
+    return (total(nums, n-1)+ nums[n-1]);
+}
+//Extra lines of code
+int main() {
+    for (int i = 0; i < 10; i++) {
+        printf("Enter number : ");
+        scanf("%d", &nums[i]);
+    }
+    int n = sizeof(nums)/sizeof(nums[0]);
+    printf("Sum of array: %d\n", total(nums,n));
+}
+
+//C
+
+#include <stdio.h>
+
+int num = 5;//Could be any value
+
+//Required function to pass by referencing
+int cube(int *pNum){
+    (*pNum) = (*pNum) * (*pNum) * (*pNum);
+    return 0;
+}
+
+int main(void) {
+
+    printf("The cube of var num when stored in an integer: %d\n ", (num * num * num));
+
+    cube(&num);
+    printf("The cube of the variable num through the function 'cube' is %d\n", num);
+
+    //int cubeInt = num * num * num;
+    getchar();
+    return 0;
+}

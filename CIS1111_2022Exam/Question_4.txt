@@ -1,0 +1,109 @@
+//
+// Created by Mia Gauci on 30/05/2022.
+//
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <string.h>
+
+//A
+typedef struct PersonNode
+{
+    char name[20];
+    char surname[20];
+    char telNum[9];
+    struct PersonNode *nextPerson; // A pointer used to point to the next node
+}PersonNode;
+
+//b
+PersonNode* head = NULL;//Pointing to the head of the linked list
+
+int addPersonNode(char name[20], char surname[20], char telNum[9]){
+    //n refers to the number of elements in the linked list
+    PersonNode *n;
+    PersonNode *newPerson;
+
+    //Creating a new node
+    //allocating memory for all the bytes needed to store PersonNode
+    newPerson = (PersonNode*)malloc(sizeof(PersonNode));
+    //assigning the data to their respective values
+    strcpy(newPerson->name, name);
+    strcpy(newPerson->surname, surname);
+    strcpy(newPerson->telNum, telNum);
+    //making a pointer to a new structure
+    newPerson->nextPerson = NULL;
+
+
+    if (head == NULL){
+        head = newPerson;
+    }
+    else{
+        n = head;
+        while(n->nextPerson !=NULL){
+            //Goes to the next node
+            n = n->nextPerson;
+        }
+        //The newly created node is added after the last node
+        n->nextPerson = newPerson;
+    }
+}
+
+//C
+/*
+ * To make the program more efficient we put a pointer at the beginning of the linked list instead of just declaring a new person 
+ * This way the program will always start from the first node 
+ * An even more efficient way of doing this is by using Doubly linked list 
+ * For addPersonNode to be more efficient we use Doubly linked list instead of singly linked list
+ * When using doubly linked lists, it points to the node next to it and the node before it
+ * Hence when traversing through the linked list there is no need to traverse it from the beginning like a singly linked list
+ * Doubly Linked List is thus more efficient since it takes less time to access a node at any given position unlike singly linked list which passes through every node from the beginning to access the desired node
+*/
+
+//code snippet 
+void addPersonNode(char name[20], char surname[20], char telNum[9]){
+    //pointer that points to the head i.e. beginning of the linked list 
+    newPerson->nextPerson = *head;
+    *head = newPerson;
+}
+
+//D
+void displayList(){
+    PersonNode* n = head;
+
+    while(n != NULL){
+        printf("Name: %s \n ", n->name);
+        printf("Surname: %s \n", n->surname);
+        printf("Telephone Number: %s \n ", n->telNum);
+        n = n->nextPerson;
+    }
+    printf("\n\n\n");
+}
+
+int main(void){
+    char name[20];
+    char surname[20];
+    char email[50];
+    int option = 0;
+
+    do{
+        printf("Enter choice:\n 1. Add name\n 2. Display all names\n 3. Exit\n");
+        scanf("%d", &option);
+        switch(option){
+            case 1://add name
+                printf("Enter name\n");
+                scanf("%s", name);
+                printf("Enter surname\n");
+                scanf("%s", surname);
+                printf("Enter email\n");
+                scanf("%s", email);
+                addPersonNode(name, surname, email);
+                break;
+            case 2: // display all name
+                displayList();
+                break;
+            default:
+                printf("Invalid input\n");
+        }
+    }while(option != 5);
+}

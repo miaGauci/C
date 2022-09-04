@@ -1,0 +1,308 @@
+QUESTION 1
+
+#include <stdio.h>
+
+int main() {
+    //a
+    printf("\"When nothing goes right, go left.\"\n\t- Martha Cecilia\n");
+
+    //b
+    float phi = 1.61803;
+    printf("Value of variable phi at 2 decimal place: %.2f\n", phi);
+
+    //c
+    for (int i = 1; i < 11; i++) {
+        printf("%d x 5 = %d\n", i, (i * 5));
+    }
+
+    //d
+    int menuOption;
+    while (menuOption < 1 || menuOption > 5) {
+        printf("Enter menu Option:");
+        scanf("%d", &menuOption);
+    }
+
+    //e
+    char puzzle[4][10];
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 10; j++) {
+            printf("*  ", puzzle[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+QUESTION 2
+
+//
+// Created by Mia Gauci on 30/05/2022.
+//
+
+//A
+int intInput(int userNum, int max, int min){
+    printf("Minimum value allowed is 1 and the Maximum value allowed is 10");
+    printf("Enter number: \n");
+    scanf("%d", &userNum);
+
+    return (min<userNum && userNum<max);
+}
+
+#include <stdio.h>
+//B
+int nums[10];
+//recursive function requested
+int total(int nums[], int n){
+    if(n<=0){
+        return 0;
+    }
+    return (total(nums, n-1)+ nums[n-1]);
+}
+//Extra lines of code
+int main() {
+    for (int i = 0; i < 10; i++) {
+        printf("Enter number : ");
+        scanf("%d", &nums[i]);
+    }
+    int n = sizeof(nums)/sizeof(nums[0]);
+    printf("Sum of array: %d\n", total(nums,n));
+}
+
+//C
+
+#include <stdio.h>
+
+int num = 5;//Could be any value
+
+//Required function to pass by referencing
+int cube(int *pNum){
+    (*pNum) = (*pNum) * (*pNum) * (*pNum);
+    return 0;
+}
+
+int main(void) {
+
+    printf("The cube of var num when stored in an integer: %d\n ", (num * num * num));
+
+    cube(&num);
+    printf("The cube of the variable num through the function 'cube' is %d\n", num);
+
+    //int cubeInt = num * num * num;
+    getchar();
+    return 0;
+}
+
+QUESTION 3
+
+//
+// Created by Mia Gauci on 30/05/2022.
+//
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main(void)
+{
+    char puzzle[10][10] = {
+            {'C','P','*','*','Q','*','*','U','*','*'},
+            {'*','A','*','*','U','*','*','N','*','*'},
+            {'*','N','R','*','A','*','*','I','*','*'},
+            {'*','D','*','*','R','*','*','V','*','*'},
+            {'*','E','*','*','A','*','*','E','*','*'},
+            {'*','M','*','*','N','*','*','R','*','*'},
+            {'*','I','*','*','T','*','*','S','*','*'},
+            {'*','C','*','*','I','*','*','I','*','*'},
+            {'*','*','*','*','N','*','*','T','*','*'},
+            {'B','U','S','*','E','*','*','Y','*','*'}
+    };
+
+    srand(time(NULL));
+
+    for (int i = 0; i<10; i++){
+        for(int j = 0; j< 10; j++){
+            if (puzzle[i][j] == '*'){
+                puzzle[i][j] = (rand() % 26) + 65;
+            }
+        }
+    }
+
+    for (int i = 0; i < 10; ++i) {
+        for (int j = 0; j < 10; ++j) {
+            printf("%c  ", puzzle[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+//
+}
+
+QUESTION 4
+
+//
+// Created by Mia Gauci on 30/05/2022.
+//
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <string.h>
+
+//A
+typedef struct PersonNode
+{
+    char name[20];
+    char surname[20];
+    char telNum[9];
+    struct PersonNode *nextPerson; // A pointer used to point to the next node
+}PersonNode;
+
+//b
+PersonNode* head = NULL;//Pointing to the head of the linked list
+
+int addPersonNode(char name[20], char surname[20], char telNum[9]){
+    //n refers to the number of elements in the linked list
+    PersonNode *n;
+    PersonNode *newPerson;
+
+    //Creating a new node
+    //allocating memory for all the bytes needed to store PersonNode
+    newPerson = (PersonNode*)malloc(sizeof(PersonNode));
+    //assigning the data to their respective values
+    strcpy(newPerson->name, name);
+    strcpy(newPerson->surname, surname);
+    strcpy(newPerson->telNum, telNum);
+    //making a pointer to a new structure
+    newPerson->nextPerson = NULL;
+
+
+    if (head == NULL){
+        head = newPerson;
+    }
+    else{
+        n = head;
+        while(n->nextPerson !=NULL){
+            //Goes to the next node
+            n = n->nextPerson;
+        }
+        //The newly created node is added after the last node
+        n->nextPerson = newPerson;
+    }
+}
+
+//C
+/*
+ * To make the program more efficient we put a pointer at the beginning of the linked list instead of just declaring a new person 
+ * This way the program will always start from the first node 
+ * An even more efficient way of doing this is by using Doubly linked list 
+ * For addPersonNode to be more efficient we use Doubly linked list instead of singly linked list
+ * When using doubly linked lists, it points to the node next to it and the node before it
+ * Hence when traversing through the linked list there is no need to traverse it from the beginning like a singly linked list
+ * Doubly Linked List is thus more efficient since it takes less time to access a node at any given position unlike singly linked list which passes through every node from the beginning to access the desired node
+*/
+
+//code snippet 
+void addPersonNode(char name[20], char surname[20], char telNum[9]){
+    //pointer that points to the head i.e. beginning of the linked list 
+    newPerson->nextPerson = *head;
+    *head = newPerson;
+}
+
+//D
+void displayList(){
+    PersonNode* n = head;
+
+    while(n != NULL){
+        printf("Name: %s \n ", n->name);
+        printf("Surname: %s \n", n->surname);
+        printf("Telephone Number: %s \n ", n->telNum);
+        n = n->nextPerson;
+    }
+    printf("\n\n\n");
+}
+
+QUESTION 6
+
+//
+// Created by Mia Gauci on 30/05/2022.
+//
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include <ctype.h>
+
+int main()
+{
+    char *palindrome;
+    int i;
+    int size;
+
+    //allocating memory for 255 possible characters entered
+    palindrome = malloc(sizeof(char) * 255);
+
+    printf("Enter a word:\n ");
+    scanf("%s",palindrome);
+
+    size = strlen(palindrome);
+
+    //dividing the word in 2 to check whether the character positions are mirrored
+    for(i = 0; i < size/2 ;i++){
+        //comparing individual characters to be mirrored
+        if(tolower(palindrome[i]) != tolower(palindrome[size - 1 -i])){
+            printf("Word entered is not a Palindrome:(\n");
+            break;
+        }
+    }
+
+    if(i==size/2){
+        printf("Word entered is a Palindrome!\n");
+    }
+}
+
+QUESTION 7
+
+//
+// Created by Mia Gauci on 30/05/2022.
+//
+
+#include<stdio.h>
+#include<string.h>
+
+char anagram1[20];
+char anagram2[20];
+int length, anagram;
+
+
+
+int main(void){
+    printf("Enter First word: \n");
+    scanf("%s", anagram1);
+    printf("Enter Second word: \n");
+    scanf("%s", anagram2);
+
+    //Checking whether both words have the same length
+    if (strlen(anagram1) == (strlen(anagram2))){
+        length = strlen(anagram1);
+        for(int i=0; i<length; i++){
+            anagram = 0;
+            for(int j=0; j<length; j++){
+                //checking that all the letters are present in both words
+                if (anagram1[i] == anagram2[j]){
+                    anagram = 1;
+                }
+            }
+        }
+        if (anagram == 1){
+            printf("Words are Anagram!!\n");
+        }
+        else{
+            printf("Words are Not Anagram:(\n");
+        }
+
+    }
+    else{
+        printf("Words are not of the same length so they can't be anagram\n try again\n");
+        getchar();
+        return 0;
+    }
+}

@@ -1,0 +1,45 @@
+//
+// Created by Mia Gauci on 30/05/2022.
+//
+
+#include<stdio.h>
+#include<string.h>
+
+char anagram1[20];
+char anagram2[20];
+int length, anagram;
+
+
+
+int main(void){
+    printf("Enter First word: \n");
+    scanf("%s", anagram1);
+    printf("Enter Second word: \n");
+    scanf("%s", anagram2);
+
+    //Checking whether both words have the same length
+    if (strlen(anagram1) == (strlen(anagram2))){
+        length = strlen(anagram1);
+        for(int i=0; i<length; i++){
+            anagram = 0;
+            for(int j=0; j<length; j++){
+                //checking that all the letters are present in both words
+                if (anagram1[i] == anagram2[j]){
+                    anagram = 1;
+                }
+            }
+        }
+        if (anagram == 1){
+            printf("Words are Anagram!!\n");
+        }
+        else{
+            printf("Words are Not Anagram:(\n");
+        }
+
+    }
+    else{
+        printf("Words are not of the same length so they can't be anagram\n try again\n");
+        getchar();
+        return 0;
+    }
+}

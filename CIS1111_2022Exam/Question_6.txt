@@ -1,0 +1,36 @@
+//
+// Created by Mia Gauci on 30/05/2022.
+//
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include <ctype.h>
+
+int main()
+{
+    char *palindrome;
+    int i;
+    int size;
+
+    //allocating memory for 255 possible characters entered
+    palindrome = malloc(sizeof(char) * 255);
+
+    printf("Enter a word:\n ");
+    scanf("%s",palindrome);
+
+    size = strlen(palindrome);
+
+    //dividing the word in 2 to check whether the character positions are mirrored
+    for(i = 0; i < size/2 ;i++){
+        //comparing individual characters to be mirrored
+        if(tolower(palindrome[i]) != tolower(palindrome[size - 1 -i])){
+            printf("Word entered is not a Palindrome:(\n");
+            break;
+        }
+    }
+
+    if(i==size/2){
+        printf("Word entered is a Palindrome!\n");
+    }
+}
