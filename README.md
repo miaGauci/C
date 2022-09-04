@@ -1,9 +1,12 @@
 # C
-Learning C 
+## Learning C 
 
+###
 C Programming Notes: 
 
 Pre-processing directive: 
+
+```
 #include <stdio.h>
 
 Int main(void){
@@ -11,6 +14,7 @@ Int main(void){
 	return 0; 
 }
 
+```
 getchar() function is used so that the program pauses until the user hits the enter key. getchar(); // To absorb the enter key
 
 
@@ -22,11 +26,16 @@ Constants are defined by #define; Example #define PI 3.142
 
 To output, an integer/string from printf one must but %d/%s
 Scanf to read anything (input that matches format specifier) 
+
+```
 int a; 
 Float num; 
 Char text[20];
 scanf (“%d %f %s”, &a, &num, text);
 print(“You entered: %d”, a);
+```
+
+
 Note that the & must be used to access the variable addresses. The & isn't needed for a string because a string name acts as a pointer.
 Note: the & sign before the variable name is the address operator - gives the address, location in memory of a variable. This is because scanf places an input value at a variable address. 
 Note: scanf() stops reading when it encounters a space, so text such as “Mia Gauci” is 2 separate inputs for scanf() hence why we use gets for strings
@@ -35,26 +44,30 @@ Note: % are format specifiers
 The optional * will skip the input field.
 The optional max_width gives the maximum number of characters to assign to an input field.
 The conversion character converts the argument, if necessary, to the indicated type:
-d decimal
-c character
-s string
-f float
-x hexadecimal
+- d decimal
+- c character
+- s string
+- f float
+- x hexadecimal
 
 gets is to read input as an ordered sequence of characters - string
 
 getchar() and putchar() are used for a single character 
+```
 Char a = getchar(); 
 printf(“You entered: ”);
 putchar(a);
 Return 0; 
+```
 
 gets() and puts() are used for string 
+
+```
 Char a[100]; 
 gets(a);
 “You entered”;
 puts(a);
-
+```
 Note: C may not evaluate a numeric expression as desired when the associative property allows any order. For example, x*y*z may be evaluated as (x * y) * z or as x * (y * z). If order is important, break the expression into separate statements.
 
 Type casting is when you force the result of an expression to a different type: avg = (float) total/count; 
