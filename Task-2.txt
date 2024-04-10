@@ -1,0 +1,173 @@
+//Question2 - Assignment
+
+// C++ program to demonstrate the working of private inheritance
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+//Superclass 
+class Component {
+
+  protected:
+    //Attributes 
+    int code; 
+    double unitPrice; 
+    string name; 
+
+
+  public:
+    //Constructor 
+
+    Component(){}
+
+    Component(int code, double unitPrice, string name){
+        this->code = code; 
+        this->unitPrice = unitPrice; 
+        this->name = name; 
+    }
+
+
+    //Setters 
+    void setCode(int code){
+        this->code = code; 
+    }
+
+    void setUnitPrice(double unitPrice){
+        this->unitPrice = unitPrice; 
+    }
+
+    void setName(string name){
+        this->name = name; 
+    }
+
+    //Getters 
+    int getCode(){
+        return code; 
+    }
+
+    double getUnitPrice(){
+        return unitPrice; 
+    }
+
+    string getName(){
+        return name; 
+    }
+
+    void enterDetails(){
+        cout << "Enter code: ";
+        cin >> code;
+        cout << "Enter unit price: ";
+        cin >> unitPrice;
+        cout << "Enter name: ";
+        cin >> name;
+
+    }
+
+    void displayDetails(){
+        //return display; 
+        cout << "CODE       : " << code << endl; 
+        cout << "UNIT PRICE : " << unitPrice << endl; 
+        cout << "NAME       : " << name << endl;
+    }
+};
+
+class LogicGate : public Component {
+
+private: 
+    string gateType; 
+    int numOfInputs;  
+
+public:
+
+    void setGateType(string gateType){
+        this->gateType = gateType; 
+    }
+    string getGateType(){
+        return gateType; 
+    } 
+
+
+    void enterDetails(){
+        // Assign the component as a LogicGate
+            cout << "Enter gate type: ";
+            string gateType;
+            cin >> gateType;
+            cout << "Enter number of inputs: ";
+            int numOfInputs;
+            cin >> numOfInputs;
+    }
+
+    void displayDetails(){
+        Component::displayDetails(); 
+        cout << "GATE TYPE     : " << gateType << endl; 
+        cout << "NUM OF INPUTS : " << numOfInputs << endl; 
+    }
+
+};
+
+class Capacitor : public  Component{
+private: 
+    int nominalCapacitance; 
+    int workingVoltage; 
+
+public: 
+
+    void setNominalCapacitance(int nominalCapacitance){
+        this->nominalCapacitance = nominalCapacitance; 
+    }
+
+    void setWorkingVoltage(int workingVoltage){
+        this->workingVoltage = workingVoltage; 
+    }
+
+    int getNominalCapacitance(){
+        return nominalCapacitance; 
+    }
+
+    int getWorkingVoltage(){
+        return workingVoltage; 
+    }
+
+    virtual void enterDetails(){
+       
+        // Assign the component as a Capacitor
+            cout << "Enter nominal capacitance: ";
+            int nominalCapacitance;
+            cin >> nominalCapacitance;
+            cout << "Enter working voltage: ";
+            int workingVoltage;
+            cin >> workingVoltage;
+            //components[i] = new Capacitor(code, unitPrice, name, nominalCapacitance, workingVoltage);
+    }
+
+    virtual void displayDetails(){
+        Component::displayDetails(); 
+        cout << "NOMINAL CAPACITANCE: " << nominalCapacitance << endl; 
+        cout << "WORKING VOLTAGE    : " << workingVoltage << endl; 
+    }
+}; 
+
+
+int main() {
+    LogicGate lg;
+    Capacitor cap;
+    
+    Component * componets[3];///declaring Array
+
+    componets[0]= new LogicGate();///two object for LogicGate
+    componets[1]= new LogicGate();
+    componets[2]= new Capacitor();///1 object for Capacitor
+
+    for(int i=0;i<=3;i++)
+    {
+        componets[i]->Component::enterDetails();///calling base class method
+        componets[i]->enterDetails();//calling derived class method 
+
+    }
+
+    return 0;
+
+    
+}

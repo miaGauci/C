@@ -1,0 +1,125 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red89\green138\blue67;\red202\green202\blue202;\red183\green111\blue179;
+\red70\green137\blue204;\red194\green126\blue101;\red67\green192\blue160;\red212\green214\blue154;\red140\green211\blue254;
+\red167\green197\blue152;\red205\green173\blue106;}
+{\*\expandedcolortbl;;\cssrgb\c41569\c60000\c33333;\cssrgb\c83137\c83137\c83137;\cssrgb\c77255\c52549\c75294;
+\cssrgb\c33725\c61176\c83922;\cssrgb\c80784\c56863\c47059;\cssrgb\c30588\c78824\c69020;\cssrgb\c86275\c86275\c66667;\cssrgb\c61176\c86275\c99608;
+\cssrgb\c70980\c80784\c65882;\cssrgb\c84314\c72941\c49020;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 //Question1 - Assignment \cf3 \strokec3 \
+\
+\cf2 \strokec2 /*\cf3 \strokec3 \
+\cf2 \strokec2 Write a class named Cylinder that consists of two attributes, baseRadius and height\cf3 \strokec3 \
+\cf2 \strokec2 Implement the following constructors:\cf3 \strokec3 \
+\cf2 \strokec2 \'95 An empty and parameter less constructor\cf3 \strokec3 \
+\cf2 \strokec2 \'95 A constructor that accepts as parameters the base and the height\cf3 \strokec3 \
+\cf2 \strokec2 \'95 Getter and setters for the two attributes\cf3 \strokec3 \
+\cf2 \strokec2 */\cf3 \strokec3 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf4 \strokec4 #define\cf5 \strokec5  _USE_MATH_DEFINES\cf3 \strokec3 \
+\
+\cf4 \strokec4 #include\cf5 \strokec5  \cf6 \strokec6 <iostream>\cf3 \strokec3 \
+\cf4 \strokec4 #include\cf5 \strokec5  \cf6 \strokec6 <string>\cf3 \strokec3 \
+\
+\cf4 \strokec4 #include\cf5 \strokec5  \cf6 \strokec6 <cmath>\cf5 \strokec5  \cf2 \strokec2 // M_PI\cf3 \strokec3 \
+\
+\cf4 \strokec4 using\cf3 \strokec3  \cf5 \strokec5 namespace\cf3 \strokec3  \cf7 \strokec7 std\cf3 \strokec3 ;\
+\
+\pard\pardeftab720\partightenfactor0
+\cf5 \strokec5 class\cf3 \strokec3  \cf7 \strokec7 Cylinder\cf3 \strokec3 \{\
+    \cf5 \strokec5 protected:\cf3 \strokec3  \
+\pard\pardeftab720\partightenfactor0
+\cf2 \strokec2     //Attributes \cf3 \strokec3 \
+    \cf5 \strokec5 double\cf3 \strokec3  base; \
+    \cf5 \strokec5 double\cf3 \strokec3  height; \
+    \cf5 \strokec5 double\cf3 \strokec3  volume; \
+\
+    \cf5 \strokec5 public:\cf3 \strokec3  \
+\
+\cf2 \strokec2     //Constructor\cf3 \strokec3 \
+    \cf8 \strokec8 Cylinder\cf3 \strokec3 (\cf5 \strokec5 double\cf3 \strokec3  \cf9 \strokec9 b\cf3 \strokec3 , \cf5 \strokec5 double\cf3 \strokec3  \cf9 \strokec9 h\cf3 \strokec3 )\{\
+        base = b; \
+        height = h; \
+    \}\
+\
+    \cf8 \strokec8 Cylinder\cf3 \strokec3 ()\{\
+\cf2 \strokec2         //An empty and parameterless constructor \cf3 \strokec3 \
+    \}\
+\
+\cf2 \strokec2     //Setters \cf3 \strokec3 \
+    \cf5 \strokec5 void\cf3 \strokec3  \cf8 \strokec8 setBase\cf3 \strokec3 (\cf5 \strokec5 double\cf3 \strokec3  \cf9 \strokec9 b\cf3 \strokec3 )\{\
+        base = b; \
+    \}\
+\
+    \cf5 \strokec5 void\cf3 \strokec3  \cf8 \strokec8 setHeight\cf3 \strokec3 (\cf5 \strokec5 double\cf3 \strokec3  \cf9 \strokec9 h\cf3 \strokec3 )\{\
+        height = h; \
+    \}\
+\
+\cf2 \strokec2     //Getters \cf3 \strokec3 \
+    \cf5 \strokec5 double\cf3 \strokec3  \cf8 \strokec8 getBase\cf3 \strokec3 ()\{\
+        \cf4 \strokec4 return\cf3 \strokec3  base; \
+    \}\
+\
+    \cf5 \strokec5 double\cf3 \strokec3  \cf8 \strokec8 getHeight\cf3 \strokec3 ()\{\
+        \cf4 \strokec4 return\cf3 \strokec3  height; \
+    \}\
+\
+    \cf5 \strokec5 double\cf3 \strokec3  \cf8 \strokec8 calculateVol\cf3 \strokec3 ()\{\
+        \cf4 \strokec4 return\cf3 \strokec3  M_PI * \cf8 \strokec8 pow\cf3 \strokec3 (base,\cf10 \strokec10 2\cf3 \strokec3 ) * height; \
+    \}\
+    \
+    \cf5 \strokec5 double\cf3 \strokec3  \cf8 \strokec8 userVol\cf3 \strokec3 (\cf5 \strokec5 double\cf3 \strokec3  \cf9 \strokec9 userRadius\cf3 \strokec3 , \cf5 \strokec5 double\cf3 \strokec3  \cf9 \strokec9 userHeight\cf3 \strokec3 )\{\
+        \cf4 \strokec4 return\cf3 \strokec3  M_PI * \cf8 \strokec8 pow\cf3 \strokec3 (userRadius,\cf10 \strokec10 2\cf3 \strokec3 ) * userHeight;\
+    \}\
+    \
+    \cf5 \strokec5 void\cf3 \strokec3  \cf8 \strokec8 displayDetails\cf3 \strokec3 ()\{\
+        cout << \cf6 \strokec6 "BASE   : "\cf3 \strokec3  << base << endl; \
+        cout << \cf6 \strokec6 "HEIGHT : "\cf3 \strokec3  << height << endl; \
+        cout << \cf6 \strokec6 "VOLUME : "\cf3 \strokec3  << \cf8 \strokec8 calculateVol\cf3 \strokec3 () << endl; \
+    \}\
+    \
+    \cf5 \strokec5 void\cf3 \strokec3  \cf8 \strokec8 displayUser\cf3 \strokec3 (\cf5 \strokec5 double\cf3 \strokec3  \cf9 \strokec9 userVolume\cf3 \strokec3 )\{\
+        cout << \cf6 \strokec6 "BASE   : "\cf3 \strokec3  << base << endl; \
+        cout << \cf6 \strokec6 "HEIGHT : "\cf3 \strokec3  << height << endl; \
+        cout << \cf6 \strokec6 "VOLUME : "\cf3 \strokec3  << userVolume << endl; \
+    \}\
+\};\
+\
+\pard\pardeftab720\partightenfactor0
+\cf5 \strokec5 int\cf3 \strokec3  \cf8 \strokec8 main\cf3 \strokec3 ()\{\
+\
+        \cf5 \strokec5 double\cf3 \strokec3  userRadius; \
+        \cf5 \strokec5 double\cf3 \strokec3  userHeight; \
+        \cf5 \strokec5 double\cf3 \strokec3  userVolume; \
+\
+        Cylinder c; \
+        \cf9 \strokec9 c\cf3 \strokec3 .\cf8 \strokec8 setBase\cf3 \strokec3 (\cf10 \strokec10 4.5\cf3 \strokec3 ); \
+        \cf9 \strokec9 c\cf3 \strokec3 .\cf8 \strokec8 setHeight\cf3 \strokec3 (\cf10 \strokec10 9.7\cf3 \strokec3 ); \
+        \cf9 \strokec9 c\cf3 \strokec3 .\cf8 \strokec8 displayDetails\cf3 \strokec3 (); \
+\
+        Cylinder user; \
+        cout << \cf6 \strokec6 "Enter Base Radius "\cf3 \strokec3 ; \
+        cin >> userRadius; \
+\
+        cout << \cf6 \strokec6 "Enter Height "\cf3 \strokec3 ; \
+        cin >> userHeight; \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 \strokec2         //absorbing enter key \cf3 \strokec3 \
+        \cf9 \strokec9 cin\cf3 \strokec3 .\cf8 \strokec8 ignore\cf3 \strokec3 (\cf7 \strokec7 numeric_limits\cf3 \strokec3 <\cf7 \strokec7 streamsize\cf3 \strokec3 >::\cf8 \strokec8 max\cf3 \strokec3 (), \cf6 \strokec6 '\cf11 \strokec11 \\n\cf6 \strokec6 '\cf3 \strokec3 );\
+\
+        userVolume = \cf9 \strokec9 c\cf3 \strokec3 .\cf8 \strokec8 userVol\cf3 \strokec3 (userRadius, userHeight); \
+\cf2 \strokec2         //cout << userVolume; \cf3 \strokec3 \
+        \cf9 \strokec9 user\cf3 \strokec3 .\cf8 \strokec8 setBase\cf3 \strokec3 (userRadius);\
+        \cf9 \strokec9 user\cf3 \strokec3 .\cf8 \strokec8 setHeight\cf3 \strokec3 (userHeight);\
+        \cf9 \strokec9 user\cf3 \strokec3 .\cf8 \strokec8 displayUser\cf3 \strokec3 (userVolume); \
+\
+        \cf4 \strokec4 return\cf3 \strokec3  \cf10 \strokec10 0\cf3 \strokec3 ; \
+\}\
+}
